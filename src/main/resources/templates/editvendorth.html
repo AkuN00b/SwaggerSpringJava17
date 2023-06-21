@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vendor Thymeleaf</title>
+</head>
+<body style="text-align: center;">
+<form th:action="@{/updateVendorth}" th:object="${vendorObject}" method="post">
+    <table>
+        <tr>
+            <td><label for="namaVendor">Nama</label></td>
+            <td><input type="text" th:field="*{namaVendor}" name="namaVendor" id="namaVendor" class="form-control"></td>
+            <td><input type="hidden" th:field="*{idVendor}" name="idVendor" id="idVendor"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="form-control">Update!</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

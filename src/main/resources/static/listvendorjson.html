@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Vendor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container text-center">
+    <h3>Daftar Vendor</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID Vendor</th>
+            <th>Nama Vendor</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <br>
+    <a href="http://localhost:8080/vendor/report/html" class="btn btn-primary">Export</a>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script type="text/javascript">
+    var url = 'http://localhost:8080/getVendors';
+    $(document).ready(function() {
+        $.getJSON(url,
+            function (json) {
+                var tr;
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr />');
+                    tr.append("<td>" + json[i].idVendor + "</td>");
+                    tr.append("<td>" + json[i].namaVendor + "</td>");
+                    tr.append("<td><button><a href='editvendorjson.html?id=" + json[i].idVendor + "'>Edit</a></button></td>");
+                    tr.append("<td><button class='btn-delete' data-id='" + json[i].idVendor + "' onclick='deleteData(" + json[i].idVendor + ")'>Hapus</button></td>");
+
+                    $('table').append(tr);
+                }
+            }
+        );
+    });
+
+    function deleteData(id) {
+        // Tampilkan konfirmasi penghapusan data
+        var confirmDelete = confirm("Anda yakin ingin menghapus data ini?");
+
+        if (confirmDelete) {
+            // Lakukan operasi JSON dengan menggunakan ID yang diterima sebagai argumen
+            // Misalnya, lakukan permintaan AJAX untuk menghapus data
+            $.ajax({
+                url: "http://localhost:8080/deleteVendor?id=" + id,
+                type: "DELETE",
+                success: function(response) {
+                    // Tampilkan pesan sukses atau lakukan tindakan lain setelah penghapusan data
+                    alert("Data berhasil dihapus!");
+                    location.reload();
+                    // Hapus baris dari tabel setelah penghapusan data
+                    // ...
+                },
+                error: function(xhr, status, error) {
+                    // Tampilkan pesan error jika gagal menghapus data
+                    alert("Terjadi kesalahan saat menghapus data.");
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

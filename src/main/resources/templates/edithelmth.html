@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Helm Thymeleaf</title>
+</head>
+<body style="text-align: center;">
+<form th:action="@{/updateHelmth}" th:object="${helmObject}" method="post">
+    <table>
+        <tr>
+            <td><label for="merk">Merk</label></td>
+            <td><input type="text" th:field="*{merk}" name="merk" id="merk" class="form-control"></td>
+            <td><input type="hidden" th:field="*{idHelm}" name="idHelm" id="idHelm"></td>
+        </tr>
+        <tr>
+            <td><label for="warna">Warna</label></td>
+            <td><input type="text" th:field="*{warna}" name="warna" id="warna" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="ukuran">Ukuran</label></td>
+            <td><input type="text" th:field="*{ukuran}" name="ukuran" id="ukuran" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="stok">Stok</label></td>
+            <td><input type="text" th:field="*{stok}" name="stok" id="stok" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="jenis">Jenis</label></td>
+            <td><input type="text" th:field="*{jenis}" name="jenis" id="jenis" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><label for="harga">Harga</label></td>
+            <td><input type="text" th:field="*{harga}" name="harga" id="harga" class="form-control"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="form-control">Update!</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

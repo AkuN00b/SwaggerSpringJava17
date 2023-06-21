@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Helm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h4>Edit Helm</h4>
+    <form action="/updateHelm" method="get">
+        <div class="form-group">
+            <label for="merk">Merk</label>
+            <input type="text" class="form-control" name="merk" id="merk">
+            <input type="hidden" name="id_helm" id="id_helm">
+        </div>
+        <div class="form-group">
+            <label for="warna">Warna</label>
+            <input type="text" class="form-control" name="warna" id="warna">
+        </div>
+        <div class="form-group">
+            <label for="ukuran">Ukuran</label>
+            <input type="text" class="form-control" name="ukuran" id="ukuran">
+        </div>
+        <div class="form-group">
+            <label for="stok">Stok</label>
+            <input type="text" class="form-control" name="stok" id="stok">
+        </div>
+        <div class="form-group">
+            <label for="jenis">Jenis</label>
+            <input type="text" class="form-control" name="jenis" id="jenis">
+        </div>
+        <div class="form-group">
+            <label for="harga">Harga</label>
+            <input type="text" class="form-control" name="harga" id="harga">
+        </div>
+        <button type="submit" class="btn btn-primary">Update!</button>
+    </form>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    // Mendapatkan nilai parameter "id" dari URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id");
+
+    // Menggunakan nilai "id" untuk tindakan yang diinginkan
+    console.log(id); // Contoh penggunaan, Anda dapat mengubahnya sesuai kebutuhan Anda
+    var url = 'http://localhost:8080/getHelm?id=' + id;
+    $(document).ready(function() {
+        $.getJSON(url,
+            function (json) {
+                console.log(json);
+
+                // Mendapatkan nilai objek JSON
+                var data = json;
+
+                // Mengisi nilai input dengan nilai dari objek JSON
+                document.getElementById('merk').value = data.merk;
+                document.getElementById('id_helm').value = data.idHelm;
+                document.getElementById('warna').value = data.warna;
+                document.getElementById('ukuran').value = data.ukuran;
+                document.getElementById('stok').value = data.stok;
+                document.getElementById('jenis').value = data.jenis;
+                document.getElementById('harga').value = data.harga;
+            }
+        );
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Helm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container text-center">
+    <h3>Daftar Helm</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Merk</th>
+            <th>Warna</th>
+            <th>Ukuran</th>
+            <th>Jenis</th>
+            <th>Stok</th>
+            <th>Harga</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <br>
+    <a href="http://localhost:8080/helm/report/html" class="btn btn-primary">Export</a>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script type="text/javascript">
+    var url = 'http://localhost:8080/getHelms';
+    $(document).ready(function() {
+        $.getJSON(url,
+            function (json) {
+                var tr;
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr />');
+                    tr.append("<td>" + json[i].merk + "</td>");
+                    tr.append("<td>" + json[i].warna + "</td>");
+                    tr.append("<td>" + json[i].ukuran + "</td>");
+                    tr.append("<td>" + json[i].jenis + "</td>");
+                    tr.append("<td>" + json[i].stok + "</td>");
+                    tr.append("<td>" + json[i].harga + "</td>");
+                    tr.append("<td><button><a href='edithelmjson.html?id=" + json[i].idHelm + "'>Edit</a></button></td>");
+                    tr.append("<td><button class='btn-delete' data-id='" + json[i].idHelm + "' onclick='deleteData(" + json[i].idHelm + ")'>Hapus</button></td>");
+
+                    $('table').append(tr);
+                }
+            }
+        );
+    });
+
+    function deleteData(id) {
+        // Tampilkan konfirmasi penghapusan data
+        var confirmDelete = confirm("Anda yakin ingin menghapus data ini?");
+
+        if (confirmDelete) {
+            // Lakukan operasi JSON dengan menggunakan ID yang diterima sebagai argumen
+            // Misalnya, lakukan permintaan AJAX untuk menghapus data
+            $.ajax({
+                url: "http://localhost:8080/deleteHelm?id=" + id,
+                type: "DELETE",
+                success: function(response) {
+                    // Tampilkan pesan sukses atau lakukan tindakan lain setelah penghapusan data
+                    alert("Data berhasil dihapus!");
+                    location.reload();
+                    // Hapus baris dari tabel setelah penghapusan data
+                    // ...
+                },
+                error: function(xhr, status, error) {
+                    // Tampilkan pesan error jika gagal menghapus data
+                    alert("Terjadi kesalahan saat menghapus data.");
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

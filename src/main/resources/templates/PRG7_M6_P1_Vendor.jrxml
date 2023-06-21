@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PRG7_M6_P1_Vendor" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="52b4dd90-e63f-4690-b102-76fd42be39ef">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterPRG7_M6_P1_Vendor"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM dbo."Vendor"]]>
+	</queryString>
+	<field name="idVendor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idVendor"/>
+		<property name="com.jaspersoft.studio.field.label" value="idVendor"/>
+	</field>
+	<field name="namaVendor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="namaVendor"/>
+		<property name="com.jaspersoft.studio.field.label" value="namaVendor"/>
+	</field>
+	<group name="idVendor">
+		<groupExpression><![CDATA[ $F{idVendor}]]></groupExpression>
+	</group>
+	<group name="namaVendor">
+		<groupExpression><![CDATA[$F{namaVendor}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-20" y="0" width="595" height="79" backcolor="#21AD62" uuid="d3368d80-10b3-42c1-8568-a7e1822f8865"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="380" y="40" width="180" height="30" forecolor="#FFFFFF" uuid="3a697927-b6e6-4115-a340-a39dd6835ac7"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Praktikum Jasper Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="24" width="180" height="30" forecolor="#FFFFFF" uuid="0e99d1ba-2ac0-48ed-9515-52c4b83bbc1e"/>
+				<textElement>
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[List Vendor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="40" width="180" height="30" forecolor="#FFFFFF" uuid="5e284793-6c30-4d32-b7d4-9f4d6f3033af"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Praktikum Jasper Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="0" width="117" height="30" uuid="a77dd659-1a2a-42c0-8afc-5d6ef6e219eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd49be4f-391e-499d-ace7-541f9cdfc890"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ID Vendor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="0" width="183" height="30" uuid="f397b1c2-b461-402f-a70a-3697424d87da">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d0c1939-9e04-4bfe-971b-05b376e7c7b6"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Vendor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="140" y="0" width="117" height="30" uuid="81c51840-fb06-4d7a-8e44-b2e71af7911e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="dd49be4f-391e-499d-ace7-541f9cdfc890"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{idVendor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="183" height="30" uuid="7684ce1f-c116-468f-9056-30b12cea2f0c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5d0c1939-9e04-4bfe-971b-05b376e7c7b6"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{namaVendor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="355" y="2" width="100" height="12" uuid="de00536e-b1c8-4e78-8535-11c82f2846d9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="455" y="2" width="100" height="12" uuid="5f31ed3c-5fd7-4aee-89ba-1d58ea629c5f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="40" y="3" width="100" height="11" uuid="a18ec762-1d62-468e-af9f-8dc1e5216a2b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="16" backcolor="#F0F0F0" uuid="70f57647-cf4e-4de5-801b-a4ef12144033"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="10" y="3" width="100" height="11" uuid="b35202c5-d360-4a57-9621-3b86e12a3395"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="455" y="2" width="100" height="12" uuid="93a99d69-73e7-489b-889f-44e0b9e280d5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="2" width="100" height="12" uuid="cac51824-8eca-4d1c-8100-a5298768ac4d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

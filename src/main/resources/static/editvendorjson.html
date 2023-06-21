@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Vendor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h4>Edit Vendor</h4>
+    <form action="/updateVendor" method="get">
+        <div class="form-group">
+            <label for="nama">Vendor</label>
+            <input type="text" class="form-control" name="nama" id="nama">
+            <input type="hidden" name="id_vendor" id="id_vendor">
+        </div>
+        <button type="submit" class="btn btn-primary">Update!</button>
+    </form>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    // Mendapatkan nilai parameter "id" dari URL
+    var urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id");
+
+    // Menggunakan nilai "id" untuk tindakan yang diinginkan
+    console.log(id); // Contoh penggunaan, Anda dapat mengubahnya sesuai kebutuhan Anda
+    var url = 'http://localhost:8080/getVendor?id=' + id;
+    $(document).ready(function() {
+        $.getJSON(url,
+            function (json) {
+                console.log(json);
+
+                // Mendapatkan nilai objek JSON
+                var data = json;
+
+                // Mengisi nilai input dengan nilai dari objek JSON
+                document.getElementById('nama').value = data.namaVendor;
+                document.getElementById('id_vendor').value = data.idVendor;
+            }
+        );
+    });
+</script>
+</body>
+</html>
